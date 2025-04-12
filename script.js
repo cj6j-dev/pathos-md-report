@@ -1,36 +1,48 @@
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('medical-record-form');
-  const recordsList = document.getElementById('records-list');
+// Check if the user is visiting for the first time
+if (!localStorage.getItem('username')) {
+    // Prompt for username
+    const username = prompt("Enter your username:");
+    localStorage.setItem('username', username);
+}
 
-  // Load saved records from localStorage
-  const loadRecords = () => {
-    const savedRecords = JSON.parse(localStorage.getItem('medicalRecords')) || [];
-    recordsList.innerHTML = savedRecords.map(record => {
-      return `<li><strong>Name:</strong> ${record.name} | <strong>Age:</strong> ${record.age}</li>`;
-    }).join('');
-  };
+// Display the username in the sidebar
+document.getElementById('username').textContent = `Username: ${localStorage.getItem('username')}`;
 
-  // Save a new record
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+// Load the list of reports dynamically
+const reportsList = document.getElementById('reports-list');
 
-    const newRecord = {
-      name: form.name.value,
-      age: form.age.value,
-      diagnosis: form.diagnosis.value,
-      treatment: form.treatment.value
-    };
+// Simulate fetching report file names (You would typically use a server-side solution for this)
+const reports = ['report1.html', 'report2.html', 'report3.html']; // Example files in the reports folder
 
-    // Get existing records, add the new one, and save back to localStorage
-    const savedRecords = JSON.parse(localStorage.getItem('medicalRecords')) || [];
-    savedRecords.push(newRecord);
-    localStorage.setItem('medicalRecords', JSON.stringify(savedRecords));
+function displayReports() {
+    reportsList.innerHTML = '';
+    reports.forEach(report => {
+        const reportItem = document.createElement('div');
+        reportItem.classList.add('report-item');
+        reportItem.textContent = report;
+        reportItem.onclick = () => openReport(report);
+        reportsList.appendChild(reportItem);
+    });
+}
 
-    form.reset();
-    loadRecords();
-  });
+// Filter reports based on search input
+function filterReports() {
+    const query = document.getElementById('search-bar').value.toLowerCase();
+    const reportItems = document.querySelectorAll('.report-item');
 
-  // Initial load
-  loadRecords();
-});
+    reportItems.forEach(item => {
+        if (item.textContent.toLowerCase().includes(query)) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+}
+
+// Open the selected report
+function openReport(report) {
+    window.open(`reports/${report}`, '_blank');
+}
+
+// Initially display the reports
+displayReports();
