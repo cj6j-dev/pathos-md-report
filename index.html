@@ -3,52 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SCP Medical Department Report</title>
-  <style>
-    body { font-family: Arial, sans-serif; background-color: #181818; color: white; }
-    h1, h2, h3 { color: #d32f2f; }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { padding: 10px; border: 1px solid #ccc; }
-  </style>
+  <title>Medical Record Log</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <h1>Medical Record Logger</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="templates/template1.html">Template 1</a>
+      <a href="templates/template2.html">Template 2</a>
+    </nav>
+  </header>
 
-  <h1>SCP Medical Department Report</h1>
+  <main>
+    <section id="record-form">
+      <h2>Create New Medical Record</h2>
+      <form id="medical-record-form">
+        <label for="name">Patient Name:</label>
+        <input type="text" id="name" name="name" required>
 
-  <h2>Incident Overview</h2>
-  <p><strong>SCP:</strong> SCP-173</p>
-  <p><strong>Date:</strong> April 12, 2025</p>
-  <p><strong>Patient ID:</strong> SCP-173-12</p>
-  <p><strong>Location:</strong> Medical Containment Ward 3</p>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
 
-  <h2>Incident Description</h2>
-  <p>SCP-173 was discovered in containment breach state. Medical team attempted immediate containment procedures...</p>
+        <label for="diagnosis">Diagnosis:</label>
+        <textarea id="diagnosis" name="diagnosis" required></textarea>
 
-  <h2>Medical Assessment</h2>
-  <p><strong>Injuries:</strong> Minor physical damage to personnel.</p>
-  <p><strong>Treatment:</strong> Standard amnestic procedures administered.</p>
+        <label for="treatment">Treatment:</label>
+        <textarea id="treatment" name="treatment" required></textarea>
 
-  <h3>Medical History</h3>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Description</th>
-      <th>Outcome</th>
-    </tr>
-    <tr>
-      <td>2025-04-01</td>
-      <td>Initial containment test</td>
-      <td>Successful</td>
-    </tr>
-    <tr>
-      <td>2025-04-10</td>
-      <td>Regular medical checkup</td>
-      <td>Stable</td>
-    </tr>
-  </table>
+        <button type="submit">Save Record</button>
+      </form>
+    </section>
 
-  <h2>Conclusion</h2>
-  <p>Further containment protocols are required. New report will be filed in the next 48 hours.</p>
+    <section id="saved-records">
+      <h2>Saved Records</h2>
+      <ul id="records-list"></ul>
+    </section>
+  </main>
 
+  <script src="script.js"></script>
 </body>
 </html>
