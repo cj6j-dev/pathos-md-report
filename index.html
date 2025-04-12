@@ -1,47 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Medical Record Log</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Viewer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Medical Record Logger</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="templates/template1.html">Template 1</a>
-      <a href="templates/template2.html">Template 2</a>
-    </nav>
-  </header>
+    <div id="sidebar">
+        <h2 id="username">Username: Guest</h2>
+    </div>
+    <div id="content">
+        <div id="search-container">
+            <input type="text" id="search-bar" placeholder="Search reports..." oninput="filterReports()">
+        </div>
+        <div id="reports-list"></div>
+    </div>
 
-  <main>
-    <section id="record-form">
-      <h2>Create New Medical Record</h2>
-      <form id="medical-record-form">
-        <label for="name">Patient Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
-
-        <label for="diagnosis">Diagnosis:</label>
-        <textarea id="diagnosis" name="diagnosis" required></textarea>
-
-        <label for="treatment">Treatment:</label>
-        <textarea id="treatment" name="treatment" required></textarea>
-
-        <button type="submit">Save Record</button>
-      </form>
-    </section>
-
-    <section id="saved-records">
-      <h2>Saved Records</h2>
-      <ul id="records-list"></ul>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
